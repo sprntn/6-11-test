@@ -1,22 +1,11 @@
-/*
-.dataContainer{
-    border-radius: 25px;
-    border: 2px solid #73AD21;
-    padding: 10px;
-    /*
-    border: 5% solid #73AD21;
-    border-radius: 10%;
-    padding: 5%;
-    
-}
-*/
 
 .mainDiv{
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
 }
 
-.childDiv{
+.innerDiv, .outerDiv{
     display: flex;
     flex-direction: column;
 
@@ -27,16 +16,12 @@
     border-radius: 1em;
     border: .2em solid #73AD21;
     
-    /*margin: 5%;*/
-    padding: 1% 1% 1% 1%;
-    /*
-    border-radius: 25px;
-    border: 2px solid #73AD21;
-    padding: 10px;
-    */
-    /*
-    border: 5% solid #73AD21;
-    border-radius: 10%;
-    padding: 5%;
-    */
+    padding: 1%;
+}
+.innerDiv{
+    margin-left: 5vw;
+}
+
+.outerDiv{
+    width: 40vw;
 }

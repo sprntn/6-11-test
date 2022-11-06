@@ -1,4 +1,89 @@
-let data = [
+window.addEventListener('load', () => {
+    const mainDiv = document.getElementById("div1");
+    loopData(mainDiv, data, 0);
+    //loopOuterData(mainDiv, data, 0);
+
+    //getData();
+})
+
+function getData(){
+    fetch("./data.json").then( res => {
+    //fetch("https://github.com/sprntn/6-11-test/blob/main/data.json").then( res => {
+        //console.log(res);
+        const mainDiv = document.getElementById("div1");
+        loopData(mainDiv, res, 0);
+        //loopOuterData(mainDiv, res, 0);
+    })
+}
+
+/*
+function loopOuterData(fatherElement , data, depth){
+    for(const element of data){
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("outerDiv");
+        fatherElement.appendChild(newDiv);
+        addData(newDiv, element, depth);
+    }
+}
+
+function loopInnerData(fatherElement , data, depth){
+    for(const element of data){
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("innerDiv");
+        fatherElement.appendChild(newDiv);
+        addData(newDiv, element, depth);
+    }
+}
+
+function addData(childElement ,item, depth){
+    childElement.style.background = colors[depth%(colors.length)];
+    childElement.innerHTML = `<p>id: ${item.id}</p><p>Site name: ${item.name}</p><p><a href="https://${item.url}" target="_blank">Site Url:${item.name}</a></p>`;
+    if(item.subData){
+        loopInnerData(childElement, item.subData, depth+1);
+    }
+}
+*/
+
+/*
+function loopData(fatherElement , data, depth){
+    for (const element of data){
+        addData(fatherElement ,element, depth); 
+    }
+    
+}
+
+function addData(fatherElement ,item, depth){
+    const newItem = document.createElement("div");
+    newItem.innerHTML = `<p>id: ${item.id}</p><p>Site name: ${item.name}</p><p><a href="https://${item.url}" target="_blank">Site Url:${item.name}</a></p>`;
+    if(depth){
+        newItem.classList.add("innerDiv");
+    }
+    else{
+        newItem.classList.add("outerDiv");
+    }
+    newItem.style.background = colors[depth%(colors.length)];
+    fatherElement.appendChild(newItem);
+    if(item.subData){
+        loopData(newItem, item.subData, depth+1);
+    }
+}
+*/
+
+function loopData(fatherElement, data, depth){
+    for (const item of data){
+        const newItem = document.createElement("div");
+        fatherElement.appendChild(newItem);
+        newItem.innerHTML = `<p>id: ${item.id}</p><p>Site name: ${item.name}</p><p><a href="https://${item.url}" target="_blank">Site Url:${item.name}</a></p>`;
+        const className = depth == 0? "outerDiv":"innerDiv";
+        newItem.classList.add(className);
+        newItem.style.background = colors[depth % (colors.length)];
+        if(item.subData){
+            loopData(newItem, item.subData, depth+1);
+        }
+    }
+}
+
+const data = [
     {
                 "id": "1",
                 "name": "google",
@@ -119,53 +204,4 @@ let data = [
             
 ];
 
-//let colors = ['red', 'yellow', 'blue', 'orange'];
 const colors = ['#83b4bd', '#09a5c0', '#787d7e', '#d38c21'];
-//const mainDiv = document.querySelector("#div1");
-//const mainDiv = document.getElementById("div1");
-
-window.addEventListener('load', () => {
-    const mainDiv = document.getElementById("div1");
-    loopData(mainDiv, data, 0);
-
-    //getData();
-})
-
-function getData(){
-    //fetch("data.json").then( res => {
-    fetch("https://github.com/sprntn/6-11-test/blob/main/data.json").then( res => {
-        //console.log(res);
-        const mainDiv = document.getElementById("div1");
-        loopData(mainDiv, res, 0);
-    })
-}
-
-function loopData(fatherElement , data, depth){
-    //const newDiv = document.createElement("div");
-    //newDiv.classList.add("dataContainer");
-    for (const element of data){
-        
-        addData(fatherElement ,element, depth);
-        /*
-        if(element.subData){
-            loopData(element.subData);
-        }
-        */
-    }
-    
-}
-
-function addData(fatherElement ,item, depth){
-    console.log(`id ${item.id} in depth ${depth}`)
-    //console.log(`id: ${item.id} name: ${item.name} url: ${item.url}`);
-    const newItem = document.createElement("div");
-    newItem.innerHTML = `<p>id: ${item.id}</p><p>Site name: ${item.name}</p><p><a href="https://${item.url}" target="_blank">Site Url:${item.name}</a></p>`;
-    newItem.classList.add("childDiv","dataContainer");
-    newItem.style.background = colors[depth%(colors.length)];
-    //mainDiv.appendChild(newItem);
-    fatherElement.appendChild(newItem);
-    if(item.subData){
-        loopData(newItem, item.subData, depth+1);
-    }
-}
-
