@@ -1,9 +1,9 @@
 window.addEventListener('load', () => {
     const mainDiv = document.getElementById("div1");
-    loopData(mainDiv, data, 0);
+    //loopData(mainDiv, data, 0);
     //loopOuterData(mainDiv, data, 0);
 
-    //getData();
+    getData();
 })
 
 function getData(){
@@ -73,7 +73,7 @@ function loopData(fatherElement, data, depth){
     for (const item of data){
         const newItem = document.createElement("div");
         fatherElement.appendChild(newItem);
-        newItem.innerHTML = `<p>id: ${item.id}</p><p>Site name: ${item.name}</p><p><a href="https://${item.url}" target="_blank">Site Url:${item.name}</a></p>`;
+        newItem.innerHTML = `<p>id: ${item.id}</p><p>Site Name: ${item.name}</p><p><a href="https://${item.url}" target="_blank">Site Url:${item.name}</a></p>`;
         const className = depth == 0? "outerDiv":"innerDiv";
         newItem.classList.add(className);
         newItem.style.background = colors[depth % (colors.length)];
