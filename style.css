@@ -13,13 +13,27 @@
 
 .mainDiv{
     display: flex;
+    flex-direction: row;
 }
 
 .childDiv{
-    /*margin-left: auto;*/
+    display: flex;
+    flex-direction: column;
+
+    margin: .5%;
+
+    text-align: left;
+
+    border-radius: 1em;
+    border: .2em solid #73AD21;
+    
+    /*margin: 5%;*/
+    padding: 1% 1% 1% 1%;
+    /*
     border-radius: 25px;
     border: 2px solid #73AD21;
     padding: 10px;
+    */
     /*
     border: 5% solid #73AD21;
     border-radius: 10%;

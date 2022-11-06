@@ -119,7 +119,8 @@ let data = [
             
 ];
 
-let colors = ['red', 'yellow', 'blue', 'orange'];
+//let colors = ['red', 'yellow', 'blue', 'orange'];
+const colors = ['#83b4bd', '#09a5c0', '#787d7e', '#d38c21'];
 //const mainDiv = document.querySelector("#div1");
 //const mainDiv = document.getElementById("div1");
 
@@ -131,7 +132,8 @@ window.addEventListener('load', () => {
 })
 
 function getData(){
-    fetch("data.json").then( res => {
+    //fetch("data.json").then( res => {
+    fetch("https://github.com/sprntn/6-11-test/blob/main/data.json").then( res => {
         //console.log(res);
         const mainDiv = document.getElementById("div1");
         loopData(mainDiv, res, 0);
